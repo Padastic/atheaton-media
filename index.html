@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atheaton | Cinematography Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FDFBF7;
+    --accent: #B2A082;
+    --accent-light: #D4C9B5;
+    --accent-subtle: rgba(178, 160, 130, 0.08);
+    --accent-border: rgba(178, 160, 130, 0.25);
+    --text: #2B2B2B;
+    --text-muted: #6B6B6B;
+    --text-light: #8A8A8A;
+    --white: #FFFFFF;
+    --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --card-shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.06);
+    --radius: 6px;
+    --max-width: 1100px;
+    --transition-speed: 0.25s;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 300;
+    font-size: 1rem;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .page {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+  }
+
+  /* ---- Hero ---- */
+  .hero {
+    text-align: center;
+    padding: 5rem 0 3.5rem;
+  }
+
+  .hero-logo {
+    max-width: 260px;
+    width: 100%;
+    height: auto;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 0.1s forwards;
+  }
+
+  .hero-tagline {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--text);
+    letter-spacing: 0.02em;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 0.35s forwards;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, var(--accent), transparent);
+    margin: 1.5rem auto;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 0.5s forwards;
+  }
+
+  .hero-subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 0.6s forwards;
+  }
+
+  /* ---- Pricing Structure ---- */
+  .pricing-structure {
+    background-color: var(--accent-subtle);
+    border: 1px solid var(--accent-border);
+    border-radius: var(--radius);
+    padding: 2rem 2.5rem;
+    margin-bottom: 4rem;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 0.7s forwards;
+  }
+
+  .pricing-structure h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .pricing-structure-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .pricing-structure-item {
+    text-align: center;
+  }
+
+  .pricing-structure-item .label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+  }
+
+  .pricing-structure-item .detail {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+
+  .vat-note {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--accent-border);
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-align: center;
+    letter-spacing: 0.03em;
+  }
+
+
+  /* ---- Section Headers ---- */
+  .category-header {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 1.5rem 0 0.5rem;
+    margin-top: 1rem;
+  }
+  .category-header:first-child {
+    margin-top: 0;
+  }
+  .category-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+    opacity: 0.8;
+  }
+  .category-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--text);
+    letter-spacing: 0.02em;
+  }
+
+  /* ---- Services Grid ---- */
+  .services-section {
+    margin-bottom: 4rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+
+  .service-card {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: cardReveal 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+  }
+
+  .service-card:nth-child(1) { animation-delay: 0.05s; }
+  .service-card:nth-child(2) { animation-delay: 0.15s; }
+  .service-card:nth-child(3) { animation-delay: 0.25s; }
+  .service-card:nth-child(4) { animation-delay: 0.35s; }
+  .service-card:nth-child(5) { animation-delay: 0.45s; }
+  .service-card:nth-child(6) { animation-delay: 0.55s; }
+
+  @keyframes cardReveal {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .service-card {
+    background: var(--white);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    border-top: 3px solid var(--accent);
+    border-left: 2px solid transparent;
+    border-radius: var(--radius);
+    padding: 2rem;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, border-left-color 0.35s ease;
+    box-shadow: var(--card-shadow);
+    position: relative;
+  }
+
+  .service-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow-hover);
+    border-left-color: var(--accent);
+  }
+
+  .service-card-header {
+    margin-bottom: 1rem;
+  }
+
+  .service-card-number {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    margin-bottom: 0.35rem;
+  }
+
+  .service-card-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.25;
+  }
+
+  .service-card-desc {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
+  }
+
+  .service-card-use {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+    opacity: 0.75;
+  }
+
+  .service-card-pricing {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding-top: 1.25rem;
+  }
+
+  .pricing-col {
+    text-align: center;
+  }
+
+  .pricing-col .rate-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-light);
+    margin-bottom: 0.2rem;
+  }
+
+  .pricing-col .rate-value {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .pricing-col .rate-value.accent {
+    color: var(--accent);
+    font-weight: 500;
+    transition: filter 0.3s ease;
+  }
+
+  .service-card:hover .pricing-col .rate-value.accent {
+    filter: brightness(0.85);
+  }
+
+  .pricing-col .rate-note {
+    font-size: 0.7rem;
+    color: var(--text-light);
+    font-style: italic;
+    margin-top: 0.1rem;
+  }
+
+  .service-card-bespoke .pricing-col.large {
+    grid-column: 1 / -1;
+  }
+
+  /* ---- Terms ---- */
+  .terms-section {
+    margin-bottom: 4rem;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 1.1s forwards;
+  }
+
+  .terms-section h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+    letter-spacing: 0.02em;
+  }
+
+  .terms-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .term-item {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .term-item:first-child {
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .term-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    cursor: pointer;
+    user-select: none;
+    transition: color var(--transition-speed) ease;
+  }
+
+  .term-header:hover {
+    color: var(--accent);
+  }
+
+  .term-header h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: inherit;
+    letter-spacing: 0.01em;
+  }
+
+  .term-icon {
+    font-size: 1.1rem;
+    color: var(--accent);
+    transition: transform var(--transition-speed) ease;
+    flex-shrink: 0;
+    margin-left: 1rem;
+  }
+
+  .term-item.open .term-icon {
+    transform: rotate(45deg);
+  }
+
+  .term-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .term-item.open .term-body {
+    max-height: 8rem;
+  }
+
+  .term-body p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    padding-bottom: 1rem;
+  }
+
+  /* ---- Footer ---- */
+  .footer {
+    text-align: center;
+    padding: 3rem 0 4rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .footer-logo-small {
+    max-width: 160px;
+    width: 100%;
+    height: auto;
+    opacity: 0.7;
+    margin-bottom: 0.75rem;
+  }
+
+  .footer-text {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* ---- Animations ---- */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---- Section Divider ---- */
+  .section-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--accent-border), transparent);
+    margin: 0 0 2.5rem;
+  }
+
+  /* ---- Responsive ---- */
+  @media (max-width: 768px) {
+    .page {
+      padding: 0 1.25rem;
+    }
+
+    .hero {
+      padding: 3rem 0 2.5rem;
+    }
+
+    .hero-logo {
+      max-width: 200px;
+    }
+
+    .hero-tagline {
+      font-size: 1.65rem;
+    }
+
+    .pricing-structure {
+      padding: 1.5rem;
+    }
+
+    .pricing-structure-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+
+    .service-card {
+      padding: 1.5rem;
+    }
+
+    .service-card-name {
+      font-size: 1.2rem;
+    }
+
+    .service-card-pricing {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .terms-section {
+      margin-bottom: 3rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-tagline {
+      font-size: 1.4rem;
+    }
+
+    .service-card-pricing {
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0.4rem;
+    }
+
+    .pricing-col .rate-value {
+      font-size: 0.85rem;
+    }
+  }
+
+  /* ---- Language Switcher ---- */
+  .lang-switch {
+    position: absolute;
+    top: 1.5rem;
+    right: 2rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+  }
+  .lang-btn {
+    background: none;
+    border: 1px solid var(--accent-border);
+    border-radius: var(--radius);
+    padding: 0.3rem 0.7rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    letter-spacing: 0.05em;
+  }
+  .lang-btn.active {
+    background: var(--accent);
+    color: var(--white);
+    border-color: var(--accent);
+  }
+  .lang-btn:hover:not(.active) {
+    color: var(--accent);
+    border-color: var(--accent);
+  }
+  [data-en], [data-el] { display: none; }
+  :root:not(.lang-el) [data-en],
+  :root.lang-el [data-el] { display: inline; }
+  :root:not(.lang-el) [data-en].block,
+  :root.lang-el [data-el].block { display: block; }
+</style>
+</head>
+<body>
+
+<div class="lang-switch">
+  <button class="lang-btn active" onclick="setLang('en')">EN</button>
+  <button class="lang-btn" onclick="setLang('el')">ΕΛ</button>
+</div>
+
+<div class="page">
+
+  <!-- Hero -->
+  <header class="hero">
+    <img src="logo.png" alt="Atheaton" class="hero-logo" width="520" height="auto">
+    <div class="hero-divider"></div>
+    <p class="hero-subtitle">Cinematography Services</p>
+  </header>
+
+  <!-- Pricing Structure -->
+  <section class="pricing-structure">
+    <h2>Pricing Structure</h2>
+    <div class="pricing-structure-grid">
+      <div class="pricing-structure-item">
+        <div class="label">Full-Day (FD)</div>
+        <div class="detail"><span data-en class="block">Up to 10 hours</span><span data-el class="block">Έως 10 ώρες</span></div>
+      </div>
+      <div class="pricing-structure-item">
+        <div class="label">Half-Day (HD)</div>
+        <div class="detail"><span data-en class="block">Up to 5 hours</span><span data-el class="block">Έως 5 ώρες</span></div>
+      </div>
+      <div class="pricing-structure-item">
+        <div class="label">Hourly (HR)</div>
+        <div class="detail"><span data-en class="block">Base rate plus 25%</span><span data-el class="block">Βασική χρέωση +25%</span></div>
+      </div>
+    </div>
+    <p class="vat-note"><span data-en>All prices are net. VAT, talent, and models not included.</span><span data-el>Όλες οι τιμές είναι καθαρές. ΦΠΑ, ηθοποιοί και μοντέλα δεν περιλαμβάνονται.</span></p>
+  </section>
+  <section class="services-section">
+    <div class="services-grid">
+
+      <div class="category-header">
+        <div class="category-label">Videography</div>
+      </div>
+
+      <!-- Available Light / Dailies -->
+      <article class="service-card">
+        <div class="service-card-header">
+          <div class="service-card-name">Available Light / Dailies</div>
+        </div>
+        <p class="service-card-desc"><span data-en class="block">I bring the camera and two wireless mics. We work with what is already there. You get the raw files on a drive. No grading. No cuts. Just clean footage ready for your team or archive.</span><span data-el class="block">Φέρνω την κάμερα και δύο ασύρματα μικρόφωνα. Δουλεύουμε με το υπάρχον φως. Παραδίδω raw αρχεία σε δίσκο. Καμία επεξεργασία. Καθαρό υλικό, έτοιμο για την ομάδα ή το αρχείο σας.</span></p>
+        <p class="service-card-use"><span data-en class="block">Social content, event coverage. When your agency handles the edit.</span><span data-el class="block">Social media, κάλυψη εκδηλώσεων. Όταν το agency σας αναλαμβάνει το μοντάζ.</span></p>
+        <div class="service-card-pricing">
+          <div class="pricing-col">
+            <div class="rate-label">FD</div>
+            <div class="rate-value accent">1.200 &euro;</div>
+          </div>
+          <div class="pricing-col">
+            <div class="rate-label">HD</div>
+            <div class="rate-value">720 &euro;</div>
+          </div>
+          <div class="pricing-col">
+            <div class="rate-label">HR</div>
+            <div class="rate-value">150 &euro;</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Available Light / Cut -->
+      <article class="service-card">
+        <div class="service-card-header">
+          <div class="service-card-name">Available Light / Cut</div>
+        </div>
+        <p class="service-card-desc"><span data-en class="block">Same setup. I also handle the edit. You get a finished piece ready to publish. Two rounds of changes included. We keep the pacing tight and the tone consistent.</span><span data-el class="block">Ίδιο setup, συν το μοντάζ. Παραδίδω έτοιμο βίντεο για δημοσίευση. Δύο κύκλοι αλλαγών. Κρατάμε τον ρυθμό σφιχτό και τον τόνο συνεπή.</span></p>
+        <p class="service-card-use"><span data-en class="block">Social reels, quick-turnaround content. Shoot and publish.</span><span data-el class="block">Social reels, γρήγορο turnaround. Γύρισμα και δημοσίευση.</span></p>
+        <div class="service-card-pricing">
+          <div class="pricing-col">
+            <div class="rate-label">FD</div>
+            <div class="rate-value accent">1.700 &euro;</div>
+          </div>
+          <div class="pricing-col">
+            <div class="rate-label">HD</div>
+            <div class="rate-value">1.020 &euro;</div>
+          </div>
+          <div class="pricing-col">
+            <div class="rate-label">HR</div>
+            <div class="rate-value">210 &euro;</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Motivated Light / Dailies -->
+      <article class="service-card">
+        <div class="service-card-header">
+          <div class="service-card-name">Motivated Light / Dailies</div>
+        </div>
+        <p class="service-card-desc"><span data-en class="block">I bring the full camera package plus lighting and grip gear. I come with an assistant. We place lights to match the environment. The result looks natural but controlled. You receive the raw footage. Color timing and cuts happen later on your end.</span><span data-el class="block">Φέρνω πλήρες πακέτο κάμερας, φωτισμό και grip. Έρχομαι με βοηθό. Τοποθετούμε φώτα που ταιριάζουν στο περιβάλλον. Το αποτέλεσμα δείχνει φυσικό αλλά ελεγχόμενο. Παραδίδεται raw υλικό. Το color timing και το μοντάζ γίνονται από εσάς.</span></p>
+        <p class="service-card-use"><span data-en class="block">When you need a camera and lighting operator. Raw footage for your editor or post house.</span><span data-el class="block">Όταν χρειάζεστε χειριστή κάμερας και φωτισμού. Raw υλικό για τον editor ή το post house σας.</span></p>
+        <div class="service-card-pricing">
+          <div class="pricing-col">
+            <div class="rate-label">FD</div>
+            <div class="rate-value accent">2.000 &euro;</div>
+          </div>
+          <div class="pricing-col">
+            <div class="rate-label">HD</div>
+            <div class="rate-value">1.200 &euro;</div>
+          </div>
+          <div class="pricing-col">
+            <div class="rate-label">HR</div>
+            <div class="rate-value">250 &euro;</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Motivated Light / Cut -->
+      <article class="service-card">
+        <div class="service-card-header">
+          <div class="service-card-name">Motivated Light / Cut</div>
+        </div>
+        <p class="service-card-desc"><span data-en class="block">Full camera, lighting, and grip setup. I come with an assistant. I shape the light, capture the footage, and deliver a finished edit. Two revision cycles included. You get a polished piece that matches the visual tone we plan.</span><span data-el class="block">Πλήρες setup κάμερας, φωτισμού και grip. Έρχομαι με βοηθό. Στήνω το φως, τραβάω το υλικό και παραδίδω το τελικό μοντάζ. Δύο κύκλοι αναθεωρήσεων. Παίρνετε ένα άρτιο αποτέλεσμα που ταιριάζει με την οπτική που σχεδιάσαμε.</span></p>
+        <p class="service-card-use"><span data-en class="block">Brand films, product spots. Cinematic look with a finished edit ready to publish.</span><span data-el class="block">Brand films, product spots. Κινηματογραφική εικόνα με έτοιμο μοντάζ.</span></p>
+        <div class="service-card-pricing">
+          <div class="pricing-col">
+            <div class="rate-label">FD</div>
+            <div class="rate-value accent">2.500 &euro;</div>
+          </div>
+          <div class="pricing-col">
+            <div class="rate-label">HD</div>
+            <div class="rate-value">1.500 &euro;</div>
+          </div>
+          <div class="pricing-col">
+            <div class="rate-label">HR</div>
+            <div class="rate-value">310 &euro;</div>
+          </div>
+        </div>
+      </article>
+
+
+      <div class="category-header">
+        <div class="category-label">Creative Direction</div>
+      </div>
+
+      <!-- Creative Direction -->
+      <article class="service-card">
+        <div class="service-card-header">
+          <div class="service-card-name">Creative Direction</div>
+        </div>
+        <p class="service-card-desc"><span data-en class="block">I come on set as creative supervisor. Your crew runs camera and lights. I direct frame, lighting, and performance. You get a director's eye without the full production package.</span><span data-el class="block">Έρχομαι στο set ως creative supervisor. Το συνεργείο σας χειρίζεται κάμερα και φώτα. Σκηνοθετώ κάδρο, φωτισμό και ερμηνεία. Παίρνετε το μάτι ενός σκηνοθέτη χωρίς το πλήρες πακέτο παραγωγής.</span></p>
+        <p class="service-card-use"><span data-en class="block">When you have your own crew and need a director on set. Creative supervision for agencies and production companies.</span><span data-el class="block">Όταν έχετε δικό σας συνεργείο και χρειάζεστε σκηνοθέτη στο set. Δημιουργική επίβλεψη για agencies και εταιρείες παραγωγής.</span></p>
+        <div class="service-card-pricing">
+          <div class="pricing-col">
+            <div class="rate-label">FD</div>
+            <div class="rate-value accent">1.500 &euro;</div>
+          </div>
+          <div class="pricing-col">
+            <div class="rate-label">HD</div>
+            <div class="rate-value">900 &euro;</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Narrative Direction / Edit -->
+      <article class="service-card">
+        <div class="service-card-header">
+          <div class="service-card-name">Narrative Direction / Edit</div>
+        </div>
+        <p class="service-card-desc"><span data-en class="block">I handle the complete workflow. I come with an assistant. We start with a brief and script work. I direct on set, operate the camera, and cut the final piece. Pre-production planning is built in. You get a complete narrative ready for release.</span><span data-el class="block">Αναλαμβάνω όλη τη ροή εργασίας. Έρχομαι με βοηθό. Ξεκινάμε με brief και δουλειά στο σενάριο. Σκηνοθετώ στο set, χειρίζομαι την κάμερα και μοντάρω το τελικό. Ο προγραμματισμός pre-production είναι ενσωματωμένος. Παίρνετε μια ολοκληρωμένη αφήγηση έτοιμη για κυκλοφορία.</span></p>
+        <p class="service-card-use"><span data-en class="block">Narrative-driven ads, small commercials. Projects that need story structure, not just shots.</span><span data-el class="block">Διαφημιστικά με αφηγηματική δομή, μικρές καμπάνιες. Projects που χρειάζονται ιστορία, όχι απλά πλάνα.</span></p>
+        <div class="service-card-pricing">
+          <div class="pricing-col">
+            <div class="rate-label">FD</div>
+            <div class="rate-value accent">3.000 &euro;</div>
+          </div>
+          <div class="pricing-col">
+            <div class="rate-label">HD</div>
+            <div class="rate-value">1.800 &euro;</div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Bespoke Production -->
+      <article class="service-card service-card-bespoke">
+        <div class="service-card-header">
+          <div class="service-card-name">Bespoke Production</div>
+        </div>
+        <p class="service-card-desc"><span data-en class="block">Larger projects need more hands. I scale the team to match your scope. We add first AD, gaffer, key grip, sound, or second unit as needed. Budgets usually land between 5.000 and 50.000 EUR. We map out the exact crew and gear before day one.</span><span data-el class="block">Μεγαλύτερα projects χρειάζονται περισσότερα χέρια. Κλιμακώνω την ομάδα ανάλογα με τις ανάγκες. Προσθέτουμε first AD, gaffer, key grip, ήχο ή second unit. Οι προϋπολογισμοί κυμαίνονται συνήθως μεταξύ 5.000 και 50.000 EUR. Σχεδιάζουμε το ακριβές συνεργείο και εξοπλισμό πριν την πρώτη μέρα.</span></p>
+        <p class="service-card-use"><span data-en class="block">Large campaigns, multi-day shoots, full production crews. When the brief demands scale.</span><span data-el class="block">Μεγάλες καμπάνιες, πολυήμερα γυρίσματα, πλήρη συνεργεία. Όταν το brief απαιτεί κλίμακα.</span></p>
+        <div class="service-card-pricing">
+          <div class="pricing-col large">
+            <div class="rate-label">Full-Day</div>
+            <div class="rate-value accent">From 3.500 &euro;</div>
+            <div class="rate-note"><span data-en class="block">Upon request</span><span data-el class="block">HD / HR κατόπιν εξειδικευμένης προσφοράς</span></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Add-ons -->
+  <section class="services-section">
+    <div class="services-grid">
+
+      <div class="category-header">
+        <div class="category-label">Add-ons</div>
+      </div>
+
+      <article class="service-card">
+        <div class="service-card-header">
+          <div class="service-card-name">Color grading</div>
+        </div>
+        <div class="service-card-pricing" style="grid-template-columns: 1fr;">
+          <div class="pricing-col">
+            <div class="rate-value accent">300 &euro;</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <div class="service-card-header">
+          <div class="service-card-name">Sound design &amp; mix</div>
+        </div>
+        <div class="service-card-pricing" style="grid-template-columns: 1fr;">
+          <div class="pricing-col">
+            <div class="rate-value accent">250 &euro;</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <div class="service-card-header">
+          <div class="service-card-name">BTS edit</div>
+        </div>
+        <div class="service-card-pricing" style="grid-template-columns: 1fr;">
+          <div class="pricing-col">
+            <div class="rate-value accent">400 &euro;</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <div class="service-card-header">
+          <div class="service-card-name">Second camera operator</div>
+        </div>
+        <div class="service-card-pricing" style="grid-template-columns: 1fr;">
+          <div class="pricing-col">
+            <div class="rate-value accent">400 &euro;</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <div class="service-card-header">
+          <div class="service-card-name">Extra revision round</div>
+        </div>
+        <div class="service-card-pricing" style="grid-template-columns: 1fr;">
+          <div class="pricing-col">
+            <div class="rate-value accent">Package hourly rate</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <div class="service-card-header">
+          <div class="service-card-name">Art director</div>
+        </div>
+        <div class="service-card-pricing" style="grid-template-columns: 1fr;">
+          <div class="pricing-col">
+            <div class="rate-value accent">400 &euro;</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="service-card">
+        <div class="service-card-header">
+          <div class="service-card-name">MUA / Hair</div>
+        </div>
+        <div class="service-card-pricing" style="grid-template-columns: 1fr;">
+          <div class="pricing-col">
+            <div class="rate-value accent">300 &euro;</div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+             <!-- Terms &amp; Conditions -->
+  <section class="terms-section">
+    <h2><span data-en class="">Terms &amp; Conditions</span><span data-el class="">Όροι &amp; Προϋποθέσεις</span></h2>
+
+    <div class="terms-accordion">
+
+      <div class="term-item">
+        <div class="term-header" onclick="this.parentElement.classList.toggle('open')">
+          <h3><span data-en class="">Revision Policy</span><span data-el class="">Πολιτική Αναθεωρήσεων</span></h3>
+          <span class="term-icon">+</span>
+        </div>
+        <div class="term-body">
+          <p><span data-en class="block">Available Light / Cut, Motivated Light / Cut, and Narrative Direction / Edit include two revision cycles. Extra rounds cost the hourly rate for that package.</span><span data-el class="block">Τα πακέτα Available Light / Cut, Motivated Light / Cut και Narrative Direction / Edit περιλαμβάνουν δύο κύκλους αναθεωρήσεων. Επιπλέον κύκλοι χρεώνονται με την ωριαία τιμή του πακέτου.</span></p>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <div class="term-header" onclick="this.parentElement.classList.toggle('open')">
+          <h3><span data-en class="">VAT</span><span data-el class="">ΦΠΑ</span></h3>
+          <span class="term-icon">+</span>
+        </div>
+        <div class="term-body">
+          <p><span data-en class="block">All prices are net. VAT is excluded.</span><span data-el class="block">Όλες οι τιμές είναι καθαρές. Ο ΦΠΑ δεν περιλαμβάνεται.</span></p>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <div class="term-header" onclick="this.parentElement.classList.toggle('open')">
+          <h3><span data-en class="">Production Expenses</span><span data-el class="">Έξοδα Παραγωγής</span></h3>
+          <span class="term-icon">+</span>
+        </div>
+        <div class="term-body">
+          <p><span data-en class="block">Travel, accommodation, daily meals, and location permits are billed separately.</span><span data-el class="block">Τα έξοδα μετακίνησης, διαμονής, διατροφής και οι άδειες τοποθεσιών τιμολογούνται ξεχωριστά.</span></p>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <div class="term-header" onclick="this.parentElement.classList.toggle('open')">
+          <h3><span data-en class="">Data Management</span><span data-el class="">Διαχείριση Δεδομένων</span></h3>
+          <span class="term-icon">+</span>
+        </div>
+        <div class="term-body">
+          <p><span data-en class="block">Hard drives for raw footage are billed to the client.</span><span data-el class="block">Οι σκληροί δίσκοι για την παράδοση raw υλικού χρεώνονται στον πελάτη.</span></p>
+        </div>
+      </div>
+
+      <div class="term-item">
+        <div class="term-header" onclick="this.parentElement.classList.toggle('open')">
+          <h3><span data-en class="">Turnaround Time</span><span data-el class="">Χρόνος Παράδοσης</span></h3>
+          <span class="term-icon">+</span>
+        </div>
+        <div class="term-body">
+          <p><span data-en class="block">Rush delivery adds 30 percent to the package total.</span><span data-el class="block">Η άμεση παράδοση προσθέτει 30% στο συνολικό κόστος του πακέτου.</span></p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <img src="logo.png" alt="Atheaton" class="footer-logo-small" width="320" height="auto">
+    <p class="footer-text">atheaton.media &middot; Stories and strategy since 2007</p>
+  </footer>
+
+</div>
+
+
+<script>
+function setLang(lang) {
+  document.documentElement.classList.toggle('lang-el', lang === 'el');
+  document.querySelectorAll('.lang-btn').forEach(function(b) {
+    b.classList.toggle('active', b.textContent.trim() === (lang === 'el' ? 'ΕΛ' : 'EN'));
+  });
+  try { localStorage.setItem('atheaton-lang', lang); } catch(e) {}
+}
+(function() {
+  var saved = localStorage.getItem('atheaton-lang');
+  if (saved) setLang(saved);
+})();
+</script>
+
+</body>
+</html>
